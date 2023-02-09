@@ -5,17 +5,27 @@ namespace CarRental.Controllers
 {
     public class CarController : Controller
     {
-        public IActionResult HomePage()
+        public IActionResult Index()
         {
             return View();
         }
-        public IActionResult HomePage(CarModel model)
+        public IActionResult Create()
+        {
+            return View();
+        }
+        private readonly CarDbContext _context;
+        public CarController(CarDbContext context)
+        {
+            _context = context;
+        }
+
+        /*public IActionResult Index(CarModel model)
         {
             if (ModelState.IsValid)
             {
-                return View("NewCar");
+                return View();
             }
             return View();
-        }
+        }*/
     }
 }

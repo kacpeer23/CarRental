@@ -17,14 +17,6 @@ namespace CarRental.Controllers
         {
             return View();
         }
-        public IActionResult AddCar()
-        {
-            return View();
-        }
-        public IActionResult AddClient()
-        {
-            return View();
-        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

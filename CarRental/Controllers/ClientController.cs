@@ -9,13 +9,17 @@ namespace CarRental.Controllers
         {
             return View();
         }
-        public IActionResult Index(ClientModel model)
+        public IActionResult Create()
+        {
+            return View();
+        }
+        /*public IActionResult Index(ClientModel model)
         {
             if (ModelState.IsValid)
             {
-                return View("NewClient");
+                return View();
             }
             return View();
-        }
+        }*/
     }
 }
