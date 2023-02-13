@@ -6,6 +6,7 @@ namespace CarRental.Models
         {
             public CarDbContext(DbContextOptions<CarDbContext> options) : base(options) {}
             public DbSet<CarModel> Cars { get; set; } = default!;
+            public DbSet<ClientModel> Clients { get; set; } = default!;
     }
     
 }

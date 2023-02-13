@@ -5,6 +5,12 @@ namespace CarRental.Controllers
 {
     public class CarController : Controller
     {
+        private readonly CarDbContext _context;
+        public CarController(CarDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -13,19 +19,16 @@ namespace CarRental.Controllers
         {
             return View();
         }
-        private readonly CarDbContext _context;
-        public CarController(CarDbContext context)
-        {
-            _context = context;
-        }
-
-        /*public IActionResult Index(CarModel model)
+        [HttpPost]
+        public IActionResult Create([FromForm] CarModel car)
         {
             if (ModelState.IsValid)
             {
-                return View();
+                _context.Cars.Add(car);
+                _context.SaveChanges();
             }
             return View();
-        }*/
+        }
+       
     }
 }
