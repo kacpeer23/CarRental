@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CarRental.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRental.Models
 { 
-    public class CarDbContext : DbContext
+    public class CarDbContext : CarRentalContext
         {
             public CarDbContext(DbContextOptions<CarDbContext> options) : base(options) {}
             public DbSet<CarModel> Cars { get; set; } = default!;
