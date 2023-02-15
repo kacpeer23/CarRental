@@ -10,24 +10,11 @@ namespace CarRental.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create([FromForm] CarModel car)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Cars.Add(car);
-                _context.SaveChanges();
-            }
-            return View();
+            var cars = _context.Cars.ToList();
+            return View(cars);
         }
        
     }

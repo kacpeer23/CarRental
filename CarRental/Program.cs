@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CarDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
-builder.Services.AddDefaultIdentity<CarRentalUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<CarRentalUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<CarDbContext>();
 var app = builder.Build();
 

@@ -14,7 +14,7 @@ namespace CarRental.Models
         [MinLength(2, ErrorMessage = "Marka musi posiadać co najmniej 2 znaki")]
 /*        [Column(TypeName = "nvarchar(50)")]
 */        public string CarBrand { get; set; }
-/*        [Column(TypeName = "nvarcxhar(50)")]
+/*        [Column(TypeName = "nvarchar(50)")]
 */        [Display(Name = "Model")]
         [Required(ErrorMessage = "Model jest wymagane")]
         [MinLength(2, ErrorMessage = "Model musi posiadać co najmniej 2 znaki")]
