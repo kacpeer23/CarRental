@@ -1,4 +1,5 @@
 ﻿using CarRental.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRental.Controllers
@@ -10,14 +11,20 @@ namespace CarRental.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Administrator")]
+
         public IActionResult Index()
         {
             return View();
         }
+        [Authorize(Roles = "Administrator")]
+
         public IActionResult Create()
         {
             return View();
         }
+        [Authorize(Roles = "Administrator")]
+
         [HttpPost]
         public IActionResult Create([FromForm] CarModel car)
         {

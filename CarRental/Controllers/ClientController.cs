@@ -1,4 +1,5 @@
 ﻿using CarRental.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRental.Controllers
@@ -10,32 +11,12 @@ namespace CarRental.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var cars = _context.Clients.ToList();
+            return View(cars);
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create([FromForm] ClientModel client)
-        {
-            Console.WriteLine(client);
-            if (ModelState.IsValid)
-            {
-                _context.Clients.Add(client);
-                _context.SaveChanges();
-            }
-            return View();
-        }
-        /*public IActionResult Index(ClientModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return View();
-            }
-            return View();
-        }*/
     }
 }

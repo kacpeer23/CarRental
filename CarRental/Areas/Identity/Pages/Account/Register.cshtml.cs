@@ -116,7 +116,6 @@ namespace CarRental.Areas.Identity.Pages.Account
                 var user = CreateUser();
                 user.Email = Input.Email;
                 user.Password = Input.Password;
-                user.ConfirmPassword = Input.Password;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

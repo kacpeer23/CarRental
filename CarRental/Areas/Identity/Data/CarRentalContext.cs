@@ -25,33 +25,37 @@ public class CarRentalContext : IdentityDbContext<CarRentalUser>
 
         // Add your customizations after calling base.OnModelCreating(builder);
 
-        builder.Entity<IdentityRole>().HasData(
-            new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN".ToUpper() },
-            new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER".ToUpper() }
-        );
-        var hasher = new PasswordHasher<IdentityUser>();
-
-        builder.Entity<IdentityUser>().HasData(
-            new IdentityUser
+        builder.Entity<IdentityRole>().HasData
+           (
+           new IdentityRole()
+           {
+               Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+               Name = "Administrator",
+               ConcurrencyStamp = "1",
+               NormalizedName = "ADMINISTRATOR"
+           }
+           );
+        var hashing = new PasswordHasher<CarRentalUser>();
+        builder.Entity<CarRentalUser>().HasData
+            (
+            new CarRentalUser()
             {
-                Id = "ef393d67-82d7-4049-8015-2a1b24a90c69",
-                UserName = "admin@gmail.com",
-                NormalizedUserName = "ADMIN@GMAIL.COM",
-                Email = "admin@gmail.com",
-                NormalizedEmail = "ADMIN@GMAIL.COM",
+                Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Test123!")
-
-            },
-            new IdentityUser
+                Email = "kacper.kowalski@gmail.com",
+                NormalizedEmail = "KACPER.KOWALSKI@GMAIL.COM",
+                LockoutEnabled = true,
+                UserName = "kacper.kowalski@gmail.com",
+                NormalizedUserName = "kacper.kowalski@gmail.com",
+                Password = "Admin123!",
+                PasswordHash = hashing.HashPassword(null, "Admin123!")
+            }
+            );
+        builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>
             {
-                Id = "9b2bbed4-4753-445c-b47e-4d0eaa925455",
-                UserName = "nowak@gmail.com",
-                NormalizedUserName = "NOWAK@GMAIL.COM",
-                Email = "nowak@gmail.com",
-                NormalizedEmail = "NOWAK@GMAIL.COM",
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Test123!")
+                RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                UserId = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7"
             }
             );
     }
@@ -62,7 +66,6 @@ IEntityTypeConfiguration<CarRentalUser>
         {
             builder.Property(x => x.Email).HasMaxLength(255);
             builder.Property(x => x.Password).HasMaxLength(255);
-            builder.Property(x => x.ConfirmPassword).HasMaxLength(255);
         }
     }
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRental.Migrations
 {
     [DbContext(typeof(CarDbContext))]
-    [Migration("20230215191052_initial")]
+    [Migration("20230216182805_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,10 +34,6 @@ namespace CarRental.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -96,6 +92,25 @@ namespace CarRental.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9c206926-29de-48f1-87d8-a9ea63ee25bc",
+                            Email = "kacper.kowalski@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "KACPER.KOWALSKI@GMAIL.COM",
+                            NormalizedUserName = "kacper.kowalski@gmail.com",
+                            Password = "Admin123!",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEGv20IAXOyQW+1oQf0qMWqLcSoTRNwoyB5SeISIAemTNTfppr2+7Y7sbt8bLKTh4A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d94b9fd7-edd5-4fbe-a2c9-3ca6fde62199",
+                            TwoFactorEnabled = false,
+                            UserName = "kacper.kowalski@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("CarRental.Models.CarModel", b =>
@@ -194,17 +209,10 @@ namespace CarRental.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
-                            ConcurrencyStamp = "6ce96000-90c5-4c5e-9b65-d45511d6b9fb",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            ConcurrencyStamp = "04d949b3-9dd3-4767-8179-861aef636636",
-                            Name = "User",
-                            NormalizedName = "USER"
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                            ConcurrencyStamp = "1",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         });
                 });
 
@@ -231,92 +239,6 @@ namespace CarRental.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "ef393d67-82d7-4049-8015-2a1b24a90c69",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "2d217e86-e1bc-4a92-ac2e-5f55ef2e2478",
-                            Email = "admin@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGCGE4tfCqalQcyZw2v25k6LPNKHrr7qYB1+BtXj8ZWOj5dgvfNnBlhzcgvKuOwKsQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "33e2cd7b-80b8-4f3f-99a5-6c44acf0dbb4",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
-                        },
-                        new
-                        {
-                            Id = "9b2bbed4-4753-445c-b47e-4d0eaa925455",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e13a216b-b06e-4139-a92a-730d2a3f7f57",
-                            Email = "nowak@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "NOWAK@GMAIL.COM",
-                            NormalizedUserName = "NOWAK@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAkEtfbZpaiJqPc+qYowW2EFp5Q9lX5dT7pl0Hy4OEUaw0ZMyPk/ou+cPwAXZSHKIg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "0c8418ac-abac-493c-881f-f7ad8597031b",
-                            TwoFactorEnabled = false,
-                            UserName = "nowak@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -381,6 +303,13 @@ namespace CarRental.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

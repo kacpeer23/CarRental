@@ -1,9 +1,9 @@
-﻿@model List<CarRental.Models.CarModel> 
+﻿@model List<CarRental.Models.ClientModel> 
  <html>  
 <head>  
 <title>Index</title>  
 <style type="text/css">
-    table.greenTable {
+   table.greenTable {
   font-family: Georgia, serif;
   border: 6px solid ##FFB100;
   background-color: #D4EED1;
@@ -67,20 +67,26 @@ table.greenTable tfoot .links a{
     <table class="greenTable">
 <thead>
 <tr>
-<th>Marka</th>
-<th>Model</th>
-<th>Rok produkcji</th>
-<th>Rodzaj paliwa</th>
+<th>Imię</th>
+<th>Nazwisko</th>
+<th>Email</th>
+<th>Wypożyczony samochód</th>
+<th>Numer telefonu</th>
+<th>Data rozpoczęcia wypożyczenia</th>
+<th>Data zakończenia wypożyczenia</th>
 </tr>
 </thead>
 <tbody>
     @foreach (var item in Model)  
    {  
        <tr>  
-           <td>@item.CarBrand</td>  
-           <td>@item.CarModelName</td>  
-           <td>@item.YearOfProduction</td>  
-           <td>@item.Fuel</td>    
+           <td>@item.FirstName</td>  
+           <td>@item.LastName</td>  
+           <td>@item.Email</td>  
+           <td>@item.RentalCar</td>    
+           <td>@item.PhoneNumber</td>    
+           <td>@item.RentalDate</td>    
+           <td>@item.EndDate</td>    
         </tr>  
     }
     </tbody>
