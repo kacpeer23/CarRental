@@ -96,16 +96,16 @@ namespace CarRental.Migrations
                         {
                             Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c206926-29de-48f1-87d8-a9ea63ee25bc",
+                            ConcurrencyStamp = "e542f4e7-9e63-494c-bafa-9708bebfbbd6",
                             Email = "kacper.kowalski@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "KACPER.KOWALSKI@GMAIL.COM",
                             NormalizedUserName = "kacper.kowalski@gmail.com",
                             Password = "Admin123!",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEGv20IAXOyQW+1oQf0qMWqLcSoTRNwoyB5SeISIAemTNTfppr2+7Y7sbt8bLKTh4A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELfMeUuANTwIfBAvGWlrd3VBupzqqcASkXWDqtHg6bR/Az2sT33u+jbBsKor8kQuaA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d94b9fd7-edd5-4fbe-a2c9-3ca6fde62199",
+                            SecurityStamp = "38a1ab97-b9bc-46a9-8839-36f0edd070f0",
                             TwoFactorEnabled = false,
                             UserName = "kacper.kowalski@gmail.com"
                         });
