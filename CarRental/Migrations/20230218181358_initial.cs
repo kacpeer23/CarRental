@@ -10,6 +10,22 @@ namespace CarRental.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Accidents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Car = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Client = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfAccident = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accidents", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -82,6 +98,23 @@ namespace CarRental.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobPosition = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -198,7 +231,7 @@ namespace CarRental.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "d57a3861-3c43-4ed0-86c1-c6f604a3afe7", 0, "9c206926-29de-48f1-87d8-a9ea63ee25bc", "kacper.kowalski@gmail.com", true, true, null, "KACPER.KOWALSKI@GMAIL.COM", "kacper.kowalski@gmail.com", "Admin123!", "AQAAAAEAACcQAAAAEEGv20IAXOyQW+1oQf0qMWqLcSoTRNwoyB5SeISIAemTNTfppr2+7Y7sbt8bLKTh4A==", null, false, "d94b9fd7-edd5-4fbe-a2c9-3ca6fde62199", false, "kacper.kowalski@gmail.com" });
+                values: new object[] { "d57a3861-3c43-4ed0-86c1-c6f604a3afe7", 0, "4445373f-7209-43b4-b51a-3616b15c576f", "kacper.kowalski@gmail.com", true, true, null, "KACPER.KOWALSKI@GMAIL.COM", "kacper.kowalski@gmail.com", "Admin123!", "AQAAAAEAACcQAAAAEFVTny/aW2p1eLIC4ot3a80+YYQ0+K14aqA/SzPaPjJPThogkirYbhk6593AZbo7lA==", null, false, "a8ef581f-6531-4d8e-a656-231ec553295b", false, "kacper.kowalski@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -248,6 +281,9 @@ namespace CarRental.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Accidents");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -267,6 +303,9 @@ namespace CarRental.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

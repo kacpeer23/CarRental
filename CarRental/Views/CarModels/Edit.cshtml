@@ -1,14 +1,19 @@
 ﻿@model CarRental.Models.CarModel
+
 @{
-    ViewData["Title"] = "Dodaj samochód";
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class = "text-warning">@ViewData["Title"]</h1>
+<h1>Edit</h1>
+
+<h4 class="text-warning">CarModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="POST">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CarBrand" class="control-label text-warning"></label>
                 <input asp-for="CarBrand" class="form-control" />
@@ -30,12 +35,16 @@
                 <span asp-validation-for="Fuel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Dodaj" class="btn btn-warning" />
+                <input type="submit" value="Zapisz" class="btn btn-warning" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Anuluj</a>
+    <a asp-action="Index">Wróć do listy</a>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

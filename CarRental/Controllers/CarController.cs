@@ -16,6 +16,6 @@ namespace CarRental.Controllers
             var cars = _context.Cars.ToList();
             return View(cars);
         }
-       
+        
     }
 }

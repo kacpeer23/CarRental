@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CarRental.Models.AccidentModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-warning">Zgłoszenia</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowe zgłoszenie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Car)
+            </th>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Client)
+            </th> 
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.DateOfAccident)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-warning">
+                @Html.DisplayFor(modelItem => item.Car)
+            </td>
+            <td class="text-warning">
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td class="text-warning">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td class="text-warning">
+                @Html.DisplayFor(modelItem => item.DateOfAccident)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

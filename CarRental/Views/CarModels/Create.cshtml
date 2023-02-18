@@ -1,0 +1,49 @@
+﻿@model CarRental.Models.CarModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class = "text-warning">Dodaj</h1>
+
+<h4>CarModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CarBrand" class="control-label text-warning"></label>
+                <input asp-for="CarBrand" class="form-control" />
+                <span asp-validation-for="CarBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarModelName" class="control-label text-warning"></label>
+                <input asp-for="CarModelName" class="form-control" />
+                <span asp-validation-for="CarModelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfProduction" class="control-label text-warning"></label>
+                <input asp-for="YearOfProduction" class="form-control" />
+                <span asp-validation-for="YearOfProduction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fuel" class="control-label text-warning"></label>
+                <input asp-for="Fuel" class="form-control" />
+                <span asp-validation-for="Fuel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć do listy</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

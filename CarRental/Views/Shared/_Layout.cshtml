@@ -23,24 +23,27 @@
                             <a class="nav-link text-warning" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
                         </li>
                         <li class="nav-item">
+                                <a class="nav-link text-warning" asp-area="" asp-controller="EmployeeModels" asp-action="Index">Pracownicy</a>
+                            </li>
+                        <li class="nav-item">
                             <a class="nav-link text-warning" asp-area="" asp-controller="Car" asp-action="Index">Dostępne samochody</a>
                         </li>
-                        @if(User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Client" asp-action="Index">Aktualni klienci</a>
-                            </li>
-                        }
-                        @if(User.Identity.IsAuthenticated){
+                        @if(User.Identity.IsAuthenticated && User.IsInRole("Administrator")){
                         <li class="nav-item">
-                            <a class="nav-link text-warning" asp-area="" asp-controller="AddCar" asp-action="Index">Dodaj samochód</a>
+                            <a class="nav-link text-warning" asp-area="" asp-controller="CarModels" asp-action="Index">Samochody</a>
                         </li>
-                        }
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="AddClient" asp-action="Index">Rezerwacja</a>
+                                <a class="nav-link text-warning" asp-area="" asp-controller="ClientModels" asp-action="Index">Klienci</a>
                             </li>
+                        }
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-warning" asp-area="" asp-controller="AccidentModels" asp-action="Index">Awarie</a>
+                                </li>
+                            }
                         }
                     </ul>
                 </div>

@@ -1,0 +1,43 @@
+﻿@model CarRental.Models.CarModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-warning">Szczegóły</h1>
+
+<div>
+    <h4 class="text-warning">Samochód</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2 text-warning">
+            @Html.DisplayNameFor(model => model.CarBrand)
+        </dt>
+        <dd class = "col-sm-10 text-warning">
+            @Html.DisplayFor(model => model.CarBrand)
+        </dd>
+        <dt class = "col-sm-2 text-warning">
+            @Html.DisplayNameFor(model => model.CarModelName)
+        </dt>
+        <dd class = "col-sm-10 text-warning">
+            @Html.DisplayFor(model => model.CarModelName)
+        </dd>
+        <dt class = "col-sm-2 text-warning">
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </dt>
+        <dd class = "col-sm-10 text-warning">
+            @Html.DisplayFor(model => model.YearOfProduction)
+        </dd>
+        <dt class = "col-sm-2 text-warning">
+            @Html.DisplayNameFor(model => model.Fuel)
+        </dt>
+        <dd class = "col-sm-10 text-warning">
+            @Html.DisplayFor(model => model.Fuel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć do listy</a>
+</div>

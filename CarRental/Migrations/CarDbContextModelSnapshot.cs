@@ -17,7 +17,7 @@ namespace CarRental.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.13")
+                .HasAnnotation("ProductVersion", "6.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -96,19 +96,47 @@ namespace CarRental.Migrations
                         {
                             Id = "d57a3861-3c43-4ed0-86c1-c6f604a3afe7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e542f4e7-9e63-494c-bafa-9708bebfbbd6",
+                            ConcurrencyStamp = "4445373f-7209-43b4-b51a-3616b15c576f",
                             Email = "kacper.kowalski@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = true,
                             NormalizedEmail = "KACPER.KOWALSKI@GMAIL.COM",
                             NormalizedUserName = "kacper.kowalski@gmail.com",
                             Password = "Admin123!",
-                            PasswordHash = "AQAAAAEAACcQAAAAELfMeUuANTwIfBAvGWlrd3VBupzqqcASkXWDqtHg6bR/Az2sT33u+jbBsKor8kQuaA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFVTny/aW2p1eLIC4ot3a80+YYQ0+K14aqA/SzPaPjJPThogkirYbhk6593AZbo7lA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "38a1ab97-b9bc-46a9-8839-36f0edd070f0",
+                            SecurityStamp = "a8ef581f-6531-4d8e-a656-231ec553295b",
                             TwoFactorEnabled = false,
                             UserName = "kacper.kowalski@gmail.com"
                         });
+                });
+
+            modelBuilder.Entity("CarRental.Models.AccidentModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Car")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Client")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfAccident")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Accidents");
                 });
 
             modelBuilder.Entity("CarRental.Models.CarModel", b =>
@@ -176,6 +204,39 @@ namespace CarRental.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("CarRental.Models.EmployeeModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobPosition")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
